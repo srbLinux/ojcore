@@ -10,6 +10,7 @@
 #include <unistd.h>
 #include <signal.h>
 #include <dirent.h>
+#include <pthread.h>
 #include <sys/wait.h>
 #include <semaphore.h>
 #include <sys/resource.h>
@@ -311,6 +312,11 @@ void OJProcessPoolPrivate::run()
 OJProcessPool::OJProcessPool(int num, judge_server_result register_func)
 {
     vptr = new OJProcessPoolPrivate(num, register_func);
+}
+
+void OJProcessPool::join(const std::vector<std::string>& code, int uid, int pid, OJJudgeLanguage lang) 
+{
+    vptr->join(code, uid, pid, lang);
 }
 
 OJ_NAMESPACE_END

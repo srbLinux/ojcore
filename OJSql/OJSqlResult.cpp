@@ -157,7 +157,6 @@ OJVariant OJMysqlResult::value(const std::string& key) {
     return OJVariant(values[record_ptr][coli]);
 }
 
-
 int OJSqliteResult::cols() { return col; }
 
 int OJSqliteResult::rows() { return row; }
@@ -206,6 +205,8 @@ OJSqlResult::OJSqlResult(const std::vector<std::string>& keys, const std::vector
         result = new OJMysqlResult();
     }
 }
+
+void OJSqlResult::first() { return result->first(); }
 
 int OJSqlResult::cols() { return result->cols(); }
 
