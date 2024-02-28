@@ -5,6 +5,11 @@
 
 #define OJ_NAMESPACE_END }
 
+#if _USE_BASE_HEADERS_
+#include <vector>
+#include <string>
+#endif
+
 OJ_NAMESPACE_BEGIN
 
 #ifdef __linux__

@@ -34,13 +34,13 @@ void OJRunTest()
     oj::OJServer server(10, result_register_callback);
 #if __linux__ 
     std::string file, lastName;
-    DIR *codeDir = opendir("./test_code");
+    DIR *codeDir = opendir("/home/linux2023/test_code");
     if (codeDir != NULL) {
         dirent *entry;
         while ((entry = readdir(codeDir)) != NULL) {
             if (entry->d_type == DT_REG) {
                 file = entry->d_name;
-                std::string filePath = "./test_code/";
+                std::string filePath = "/home/linux2023/test_code";
                 filePath += file;
                 std::string line;
                 std::vector<std::string> fileContent;
@@ -50,6 +50,7 @@ void OJRunTest()
                     fileContent.push_back(line);
                 }
                 size_t dotIndex = file.find_last_of(".");
+                oj::OJDebug::print("filename: {}", file);
                 if (dotIndex != std::string::npos && dotIndex < file.length() - 1) {
                     lastName = file.substr(dotIndex + 1);
                     if (lastName == ".c") {
